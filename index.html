@@ -21,6 +21,7 @@
 			border:1px solid #e5e5e5;
 			cursor: pointer;
 			border-radius: 5px;
+			transition: all .2s ease-in-out;
 		}
 		.box img,.box_special img{
 			width: 100%;
@@ -30,6 +31,10 @@
 		.box:hover{
 			transform: scale(1.1);
 			transition: all .2s ease-in-out;
+		}
+		.border_blue{
+			transform: scale(1.1);
+			border: 2px solid #0e88eb;
 		}
 	</style>
 </head>
@@ -64,11 +69,21 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		// var arr = [0,1,2,3,5,6,7,8];
-		// var boxList = document.getElementsByClssName('box');
+		var i=0;
+		var arr = [0,1,2,3,5,6,7,8];
+		var boxList = document.getElementsByClassName('box');
 		// for(var i=0;i<boxList.length;i++){
 
 		// }
+		setInterval(function(){
+			boxList[i].className = 'box';
+			if(i==7){
+				i=0;
+			}else{
+				i++;
+			}
+			boxList[i].className = 'box border_blue';
+		},1500)
 	</script>
 </body>
 </html>
