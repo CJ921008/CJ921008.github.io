@@ -1,1 +1,74 @@
-hello world
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>世界上最美的人</title>
+	<style type="text/css">
+		div,img{
+			box-sizing: border-box;
+		}
+		.container{
+			position: relative;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			width: 900px;
+			margin: 0 auto;
+		}
+		.box,.box_special{
+			width: 300px;
+			height: 300px;
+			border:1px solid #e5e5e5;
+			cursor: pointer;
+			border-radius: 5px;
+		}
+		.box img,.box_special img{
+			width: 100%;
+			display: block;
+			border-radius: 5px;
+		}
+		.box:hover{
+			transform: scale(1.1);
+			transition: all .2s ease-in-out;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box">
+			<img src="./img/1.jpg"> 
+		</div>
+		<div class="box">
+			<img src="./img/2.jpg">
+		</div>
+		<div class="box">
+			<img src="./img/3.jpg">
+		</div>
+		<div class="box">
+			<img src="./img/4.jpg">
+		</div>
+		<div class="box_special">
+			<img src="./img/5.jpg">
+		</div>
+		<div class="box">
+			<img src="./img/6.jpg">
+		</div>
+		<div class="box">
+			<img src="./img/7.jpg">
+		</div>
+		<div class="box">
+			<img src="./img/8.jpg">
+		</div>
+		<div class="box">
+			<img src="./img/9.jpg">
+		</div>
+	</div>
+	<script type="text/javascript">
+		// var arr = [0,1,2,3,5,6,7,8];
+		// var boxList = document.getElementsByClssName('box');
+		// for(var i=0;i<boxList.length;i++){
+
+		// }
+	</script>
+</body>
+</html>
