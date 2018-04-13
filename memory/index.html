@@ -49,6 +49,12 @@
 		z-index: 5;
 		transform: translate(-50%,-50%);
 	}
+	.count{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+	}
 </style>
 </head>
 <body>
@@ -57,12 +63,29 @@
 			
 		</div>
 		<div class="dialog" id='dialog'>
-			<div class="count"></div>
+			<div class="count">
+				在一起<b id="day"></b>天<b id="hour"></b>时<b id="min"> </b>分<b id="sec"></b>秒
+			</div>
 			<div class="descripe" id="descripe"></div>
 		</div>
 	</div>
 
 	<script>
+		var date1 = new Date('2013-05-29').getTime();
+		function count(){
+				var date = new Date().getTime();
+				var ds = date-date1;
+				var realDay = ds/1000/3600/24
+				var day = Math.floor(ds/1000/3600/24);
+				var hour = Math.floor(ds/1000/3600%24);
+				var min = Math.floor(((realDay-day)*24-hour)*60);
+				var sec = Math.floor((ds-day*24*3600*1000-hour*3600*1000-min*60*1000)/1000);
+				document.getElementById('day').innerText = day;
+				document.getElementById('hour').innerText = hour;
+				document.getElementById('min').innerText = min;
+				document.getElementById('sec').innerText = sec;
+		}
+		count();
 		var imgStr = '';
 		var imgList = [
 		{'url':'./image/1.jpg','desc':'在杭州的江边吹风,好美,好温柔的感觉.'},
@@ -115,6 +138,7 @@
 			document.getElementById('img-group').innerHTML = imgStr;
 			var imgAll = document.getElementById('img-group').childNodes;
 			var k=0;
+			setInterval(count,1000)
 			setInterval(function(){
 				if(k!=0){
 					imgAll[k-1].className = '';
@@ -131,7 +155,7 @@
 				document.getElementById('descripe').innerText = imgList[k]['desc']
 				k+=1;
 
-			},2000)
+			},4000)
 		})
 		var docEl = document.documentElement,
 		resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
