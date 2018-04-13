@@ -1,0 +1,148 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no, email=no" />
+	<title>我们的记忆</title>
+	<style type="text/css">
+	html,body{
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	div,img{
+		box-sizing: border-box;
+		font-family:Helvetica, Tahoma, Arial, "Microsoft YaHei" !important;
+	}
+	.container{
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+	.img-group{
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	.img-group img{
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		position: absolute;
+		top: -100%;
+		transition: top .5s ease-in-out;
+	}
+	.topDown{
+		top: 0% !important;
+	}
+	.dialog{
+		padding: 5px;
+		font-size: 0.7rem;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		color: #FFFFFF;
+		z-index: 5;
+		transform: translate(-50%,-50%);
+	}
+</style>
+</head>
+<body>
+	<div class="container" id='container'>
+		<div class='img-group' id='img-group'>
+			
+		</div>
+		<div class="dialog" id='dialog'>
+			<div class="count"></div>
+			<div class="descripe" id="descripe"></div>
+		</div>
+	</div>
+
+	<script>
+		var imgStr = '';
+		var imgList = [
+		{'url':'./image/1.jpg','desc':'在杭州的江边吹风,好美,好温柔的感觉.'},
+		{'url':'./image/2.jpg','desc':'哈哈 拿着新手机,做了新发型,美美的自拍~臭美中'},
+		{'url':'./image/3.jpg','desc':'臭美二人组!'},
+		{'url':'./image/4.jpg','desc':'很有feel哦你'},
+		{'url':'./image/5.jpg','desc':'在杭州第一次碰到那么那么那么大的雪!! 不管自拍一张先'},
+		{'url':'./image/6.jpg','desc':'踩雪玩,高兴坏了.你看你像不像一只企鹅'},
+		{'url':'./image/7.jpg','desc':'好糊哦,朦胧美.'},
+		{'url':'./image/8.jpg','desc':'这一天零下2度! 我们还作死的去西湖边看雪,冷死啦!'},
+		{'url':'./image/9.jpg','desc':'不畏严寒,美丽冻人.'},
+		{'url':'./image/10.jpg','desc':'这张拍完你就回老家了,为什么?因为怀孕啦!哈哈'},
+		{'url':'./image/11.jpg','desc':'短发~拍摄于动车站,出发深圳'},
+		{'url':'./image/12.jpg','desc':'拍摄于深圳,为什么你怀孕,我胖了?'},
+		{'url':'./image/13.jpg','desc':'产房,你在里面躺了24小时.心疼'},
+		{'url':'./image/14.jpg','desc':'2016.12.4 .蔡绎心来啦,老婆辛苦你了!'},
+		{'url':'./image/15.jpg','desc':'好奇的蔡绎心.'},
+		{'url':'./image/16.jpg','desc':'出生两小时~'},
+		{'url':'./image/17.jpg','desc':'两个月,第一次出门晒晒小番薯~'},
+		{'url':'./image/18.jpg','desc':'小脚丫出镜头'},
+		{'url':'./image/19.jpg','desc':'老婆'},
+		{'url':'./image/20.jpg','desc':'百天照,摄影师说你的表情怎么这么多的呀!'},
+		{'url':'./image/21.jpg','desc':'周杰伦饭店,带上我们的女儿一起追星哈哈哈'},
+		{'url':'./image/22.jpg','desc':'回老家见外婆咯'},
+		{'url':'./image/23.jpg','desc':'为什么你的头发还不长出来~'},
+		{'url':'./image/24.jpg','desc':'举高高 笑的眼睛都没啦! 好美啊你们'},
+		{'url':'./image/25.jpg','desc':'萌(๑•ᴗ•๑)'},
+		{'url':'./image/26.jpg','desc':'可爱n(*≧▽≦*)n'},
+		{'url':'./image/27.jpg','desc':'哈哈哈哈一家三口 爸爸最丑'},
+		{'url':'./image/28.jpg','desc':'我想说宝宝你怎么这么配合镜头的呢'},
+		{'url':'./image/29.jpg','desc':'拉一拉我的小帽子,妈妈配合卖一下萌'},
+		{'url':'./image/30.jpg','desc':'天气晴朗,中山农家乐一日游'},
+		{'url':'./image/31.jpg','desc':'啊....还没开始拍婚纱照我就被美到了'},
+		{'url':'./image/32.jpg','desc':'你居然不害怕马,有点厉害的哦!'},
+		{'url':'./image/33.jpg','desc':'哈哈哈哈哈怎么这么美哈哈哈哈哈哈'},
+		{'url':'./image/34.jpg','desc':'喜欢这种感觉,舒服'},
+		{'url':'./image/35.jpg','desc':'这张最美,拿来做海报'},
+		{'url':'./image/36.jpg','desc':'!'},
+		{'url':'./image/37.jpg','desc':'老婆 你好仙啊!'},
+		]
+		document.addEventListener('DOMContentLoaded',function(){
+			// debugger;
+			for (var i=0;i<imgList.length;i++){
+				if(i==0){
+					imgStr += '<img src="'+imgList[i]['url']+'" alt="'+imgList[i]['desc']+'" class="topDown">';
+					continue;
+				}
+				imgStr += '<img src="'+imgList[i]['url']+'" alt="'+imgList[i]['desc']+'">';
+			}
+			document.getElementById('img-group').innerHTML = imgStr;
+			var imgAll = document.getElementById('img-group').childNodes;
+			var k=0;
+			setInterval(function(){
+				if(k!=0){
+					imgAll[k-1].className = '';
+				}else{
+					imgAll[imgAll.length-1].className = '';
+				}
+
+				if(k==imgAll.length){
+					k=0;
+					imgAll[k].className = 'topDown';
+				}else{
+					imgAll[k].className = 'topDown';
+				}
+				document.getElementById('descripe').innerText = imgList[k]['desc']
+				k+=1;
+
+			},2000)
+		})
+		var docEl = document.documentElement,
+		resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		  recalc = function() {      
+			var clientWidth = docEl.clientWidth;      
+			if (!clientWidth) return;      
+			docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';    
+		};   
+		window.addEventListener(resizeEvt, recalc, false);  
+		document.addEventListener('DOMContentLoaded', recalc, false);
+
+	</script>
+</body>
+</html>
