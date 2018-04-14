@@ -33,14 +33,43 @@
 		object-fit: cover;
 		display: block;
 		position: absolute;
-		top: -100%;
-		transition: top .5s ease-in-out;
+		opacity: 0;
+		transition: opacity .5s ease-in-out;
 	}
 	.topDown{
-		top: 0% !important;
+		opacity: 1 !important;
 	}
 	.dialog{
-		padding: 5px;
+		padding: 2px;
+		font-size: 0.5rem;
+		color: #ffffff;
+		position: absolute;
+		top: 20px;
+		left: 50%;
+		transform: translate(-50%,0);
+		background-color: rgba(0,0,0,.5);
+		border-radius: 5px;
+		width: 80%;
+	}
+	.count{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.5rem;
+
+	}
+	.topic{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-top: 0.1rem;
+	}
+	.count b{
+		font-weight: 100;
+		display: block;
+		padding: 0px 0.15rem;
+	}
+	.descripe{
 		font-size: 0.7rem;
 		position: absolute;
 		top: 50%;
@@ -49,12 +78,6 @@
 		z-index: 5;
 		transform: translate(-50%,-50%);
 	}
-	.count{
-		display: flex;
-		align-items: center;
-		justify-content: center;
-
-	}
 </style>
 </head>
 <body>
@@ -62,11 +85,13 @@
 		<div class='img-group' id='img-group'>
 			
 		</div>
+		<div class="descripe" id="descripe"></div>
 		<div class="dialog" id='dialog'>
+			<div class="topic">Together</div>
 			<div class="count">
-				在一起<b id="day"></b>天<b id="hour"></b>时<b id="min"> </b>分<b id="sec"></b>秒
+				 <b id="day"></b>day<b id="hour"></b>hour<b id="min"> </b>min<b id="sec"></b>sec
 			</div>
-			<div class="descripe" id="descripe"></div>
+			
 		</div>
 	</div>
 
